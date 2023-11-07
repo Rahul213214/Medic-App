@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'appointment/css/style.css' %}">
+    <script src="https://apis.google.com/js/api.js"></script>
+
+    <title>Appointment Form</title>
+
+</head>
+<body>
+<h1>Calender</h1>
+<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FKolkata&src=cmQ3MzEwMTIyQGdtYWlsLmNvbQ&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4uaW5kaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039BE5&color=%2333B679&color=%230B8043" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+
+<!-- <h1>Google Calendar Events</h1>
+    <ul>
+        {% for event in events %}
+            <li>{{ event.summary }} - {{ event.start.dateTime }}</li>
+        {% endfor %}
+    </ul>
+
+<h1>Upcoming Calendar Events</h1>
+    <div id="events"></div>
+
+    <script>
+        gapi.load('client:auth2', init);
+
+        function init() {
+            gapi.client.init({
+                apiKey: 'AIzaSyBqLyL67NlsIlpY-j5d9X5FwJ2PNhBjWUg',
+                clientId: '38218877740-ba27fudrdrnlqke0e7iag0edhgpfppa7.apps.googleusercontent.com',
+                discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
+                scope: 'https://www.googleapis.com/auth/calendar.readonly',
+            }).then(function() {
+                gapi.auth2.getAuthInstance().signIn();
+                listUpcomingEvents();
+            });
+        }
+
+        function listUpcomingEvents() {
+            gapi.client.calendar.events.list({
+                'calendarId': 'primary',
+                'timeMin': (new Date()).toISOString(),
+                'showDeleted': false,
+                'singleEvents': true,
+                'maxResults': 10,
+                'orderBy': 'startTime'
+            }).then(function(response) {
+                var events = response.result.items;
+                var eventsList = document.getElementById('events');
+
+                if (events.length > 0) {
+                    for (var i = 0; i < events.length; i++) {
+                        var event = events[i];
+                        var eventDetails = document.createElement('p');
+                        eventDetails.innerHTML = event.summary + ' - ' + event.start.dateTime;
+                        eventsList.appendChild(eventDetails);
+                    }
+                } else {
+                    eventsList.innerHTML = 'No upcoming events found.';
+                }
+            });
+        }
+    </script> -->
+
+
+    
+    <div class="container">
+        <h1>Appointment Form</h1>
+        <form action="#">
+            <label for="specialty">Specialty</label>
+            <input type="text" id="specialty" name="specialty" required>
+
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Time</label>
+            <input type="time" id="time" name="time" required>
+
+            <button type="submit">Confirm</button>
+        </form>
+    </div>
+</body>
+</html>
